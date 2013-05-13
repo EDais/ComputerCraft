@@ -1,11 +1,12 @@
 # TouchAPI
 
-The touch API aims to simplify the use of touchscreens in ComputerCraft
+The touch API aims to simplify the use of touchscreens in [ComputerCraft](http://www.computercraft.info/)
 
 ## Installation
 
 If you're using an extracted version of ComputerCraft, then simply copy the file into the `minecraft\mods\computercraft\lua\rom\apis` directory, and the API will be loaded automatically when any computer is started.
-Alternatively, the file can be copied onto individual computers in-game by copying the file into the `minecraft\saves\[worldName]\computer\#` directory, where *worldName* is the name of your world, and *#* is the individual computer index. (Hint: to find a named computer, look in the *labels.txt* file)
+
+Alternatively, the file can be copied onto individual computers in-game by copying the file into the `minecraft\saves\[worldName]\computer\#` directory, where *worldName* is the name of your world, and *#* is the individual computer index. (Hint: to find the index of a named computer, look in the *labels.txt* file)
 
 ***Note:* If you're using a unmodified ComputerCraft bios, then the file extension (`.lua`) should be removed from the filename**
 
@@ -69,9 +70,22 @@ The `clear` method can be used to remove all currently defined hit targets
 touchAPI.clear()
 ```
 
+### Mouse clicks
+
+The touch API can also be used for detecting mouse clicks in the terminal, using the `waitForClick` method:
+
+`touchAPI.waitForClick([button])`
+
+Example:
+```lua
+local clickData = touchAPI.waitForClick(2)
+```
+
+This waits for a right-click on a predefined hit area.  This is also a **blocking** call similar to `waitForTouch`.
+
 ## Interaction frames
 
-Interaction frames are used to add milti-page functionality to an application, by way of a simple frame stack.
+Interaction frames are used to add multi-page functionality to an application, by way of a simple frame stack.
 
 A new interaction frame can be introduced using the `push` method:
 
@@ -86,16 +100,3 @@ Once the application wants to return to the previous page, the `pop` method will
 ```lua
 touchAPI.pop()
 ```
-
-### Mouse clicks
-
-The touch API can also be used for detecting mouse clicks, using the `waitForClick` method:
-
-`touchAPI.waitForClick([button])`
-
-Example:
-```lua
-local clickData = touchAPI.waitForClick(2)
-```
-
-This waits for a right-click on a predefined hit area.  This is also a **blocking** call similar to `waitForTouch`.
