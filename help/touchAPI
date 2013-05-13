@@ -1,0 +1,11 @@
+API for working with touch screens
+
+add(x, y, width, height, data) -- Adds a hit area
+hitTest(x, y)          -- Hit tests a position
+clear()                -- Clears all hit areas
+push()                 -- Push a new frame
+pop()                  -- Pops the current frame
+waitForTouch([side])   -- Waits for a monitor touch
+                          (Advanced monitor)
+waitForClick([button]) -- Waits for a button click
+                          (Terminal)
